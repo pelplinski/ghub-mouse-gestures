@@ -24,7 +24,7 @@
 -- Enables or disables debug logging.
 -- To find the button number for a mouse button you want to use for gestures,
 -- enable this option, press the button, and check the console output.
-enableDebug = false
+enableDebug = true
 
 -- Minimum horizontal/vertical mouse movement required to recognize a gesture
 minDiff = 100
@@ -44,56 +44,63 @@ gestureHoldMacro = "GESTURE DPI SHIFT"
 
 -- Gesture action definitions per mouse button
 Gestures = {
---[[ Gesture definitions for mouse button 2 (To enable, remove the opening [[ from this line to uncomment the block)
+-- Gesture definitions for mouse button 2 (Right mouse button on Logitech G502 X)
+-- Enabled by default, to disable this block, add the opening --[[ at the beginning of this line
     [2] = {
-        moveUp    = function() PlayMacro("G2 HOLD + MOVE UP") end,
-        moveDown  = function() PlayMacro("G2 HOLD + MOVE DOWN") end,
-        moveLeft  = function() PlayMacro("G2 HOLD + MOVE LEFT") end,
-        moveRight = function() PlayMacro("G2 HOLD + MOVE RIGHT") end,
-        click     = function() PlayMacro("G2 CLICK") end,
-        timeout   = function() OutputLogMessage("G2 Gesture Timeout\n") end,
+        moveUp    = function() pressKeys("lctrl", "lshift", "t") end,            -- Reopen last closed tab
+        moveDown  = function() pressKeys("lctrl", "r") end,                      -- Refresh current page
+        moveLeft  = function() pressKeys("lctrl", "f4") end,                     -- Close current tab
+        moveRight = function() pressKeys("lctrl", "t") end,                      -- Open new tab
+        click     = function() PressAndReleaseMouseButton(3) end,                -- Right mouse click
+        timeout   = function() PressAndReleaseMouseButton(3) end,                -- Right-click on gesture timeout
     },
 -- ]]--
---[[ Gesture definitions for mouse button 3 (To enable, remove the opening [[ from this line to uncomment the block)
-    [3] = {
-        moveUp    = function() PlayMacro("G3 HOLD + MOVE UP") end,
-        moveDown  = function() PlayMacro("G3 HOLD + MOVE DOWN") end,
-        moveLeft  = function() PlayMacro("G3 HOLD + MOVE LEFT") end,
-        moveRight = function() PlayMacro("G3 HOLD + MOVE RIGHT") end,
-        click     = function() PlayMacro("G3 CLICK") end,
-        timeout   = function() OutputLogMessage("G3 Gesture Timeout\n") end,
-    },
--- ]]--
---[[ Gesture definitions for mouse button 4 (To enable, remove the opening [[ from this line to uncomment the block)
+-- Gesture definitions for mouse button 4 (Back button / G4 on Logitech G502 X)
+--[[ To enable, remove the opening [[ from this line to uncomment the block
     [4] = {
-        moveUp    = function() PlayMacro("G4 HOLD + MOVE UP") end,
-        moveDown  = function() PlayMacro("G4 HOLD + MOVE DOWN") end,
-        moveLeft  = function() PlayMacro("G4 HOLD + MOVE LEFT") end,
-        moveRight = function() PlayMacro("G4 HOLD + MOVE RIGHT") end,
-        click     = function() PlayMacro("G4 CLICK") end,
-        timeout   = function() OutputLogMessage("G4 Gesture Timeout\n") end,
+        moveUp    = function() PlayMacro("G4 HOLD + MOVE UP") end,               -- Play Macro "G4 HOLD + MOVE UP"
+        moveDown  = function() PlayMacro("G4 HOLD + MOVE DOWN") end,             -- Play Macro "G4 HOLD + MOVE UP"
+        moveLeft  = function() PlayMacro("G4 HOLD + MOVE LEFT") end,             -- Play Macro "G4 HOLD + MOVE UP"
+        moveRight = function() PlayMacro("G4 HOLD + MOVE RIGHT") end,            -- Play Macro "G4 HOLD + MOVE UP"
+        click     = function() PlayMacro("Back") end,                            -- Play Macro "Back"
+        timeout   = function() OutputLogMessage("G4 Gesture Timeout\n") end,     -- No action on timeout
     },
 -- ]]--
--- Gesture definitions for mouse button 5 (enabled by default)
+-- Gesture definitions for mouse button 5 (Sniper button on Logitech G502 X)
+-- Enabled by default, to disable this block, add the opening --[[ at the beginning of this line
     [5] = {
-        moveUp    = function() PlayMacro("G5 HOLD + MOVE UP") end,
-        moveDown  = function() PlayMacro("G5 HOLD + MOVE DOWN") end,
-        moveLeft  = function() PlayMacro("G5 HOLD + MOVE LEFT") end,
-        moveRight = function() PlayMacro("G5 HOLD + MOVE RIGHT") end,
-        click     = function() PlayMacro("G5 CLICK") end,
-        timeout   = function() OutputLogMessage("G5 Gesture Timeout\n") end,
+        moveUp    = function() PlayMacro("SNIPER HOLD + MOVE UP") end,           -- Play Macro "SNIPER HOLD + MOVE UP"
+        moveDown  = function() PlayMacro("SNIPER HOLD + MOVE DOWN") end,         -- Play Macro "SNIPER HOLD + MOVE DOWN"
+        moveLeft  = function() PlayMacro("SNIPER HOLD + MOVE LEFT") end,         -- Play Macro "SNIPER HOLD + MOVE LEFT"
+        moveRight = function() PlayMacro("SNIPER HOLD + MOVE RIGHT") end,        -- Play Macro "SNIPER HOLD + MOVE RIGHT"
+        click     = function() PressAndReleaseMouseButton(2) end,                -- Middle mouse click
+        timeout   = function() OutputLogMessage("Sniper Gesture Timeout\n") end, -- No action on timeout
     },
 -- ]]--
---[[ Gesture definitions for mouse button 6 (To enable, remove the opening [[ from this line to uncomment the block)
-    [4] = {
-        moveUp    = function() PlayMacro("G6 HOLD + MOVE UP") end,
-        moveDown  = function() PlayMacro("G6 HOLD + MOVE DOWN") end,
-        moveLeft  = function() PlayMacro("G6 HOLD + MOVE LEFT") end,
-        moveRight = function() PlayMacro("G6 HOLD + MOVE RIGHT") end,
-        click     = function() PlayMacro("G6 CLICK") end,
-        timeout   = function() OutputLogMessage("G6 Gesture Timeout\n") end,
+-- Gesture definitions for mouse button 6 (Forward button / G5 on Logitech G502 X)
+--[[ To enable, remove the opening [[ from this line to uncomment the block
+    [6] = {
+        moveUp    = function() PlayMacro("G5 HOLD + MOVE UP") end,              -- Play Macro "G5 HOLD + MOVE UP"
+        moveDown  = function() PlayMacro("G5 HOLD + MOVE DOWN") end,            -- Play Macro "G5 HOLD + MOVE DOWN"
+        moveLeft  = function() PlayMacro("G5 HOLD + MOVE LEFT") end,            -- Play Macro "G5 HOLD + MOVE LEFT"
+        moveRight = function() PlayMacro("G5 HOLD + MOVE RIGHT") end,           -- Play Macro "G5 HOLD + MOVE RIGHT"
+        click     = function() PlayMacro("Forward") end,                        -- Play Macro "Forward"
+        timeout   = function() OutputLogMessage("G5 Gesture Timeout\n") end,    -- No action on timeout
     },
 -- ]]--
+-- Gesture definitions for mouse button 9 (G9 button on Logitech G502 X)
+-- Example of window management for Windows 
+-- Enabled by default, to disable this block, add the opening --[[ at the beginning of this line
+    [9] = {
+        moveUp    = function() pressKeys("lgui", "up") end,                    -- Maximize current window
+        moveDown  = function() pressKeys("lgui", "down") end,                  -- Restore or minimize current window
+        moveLeft  = function() pressKeys("lgui", "left") end,                  -- Snap window to the left side of the screen
+        moveRight = function() pressKeys("lgui", "right") end,                 -- Snap window to the right side of the screen
+        click     = function() pressKeys("lgui", "tab") end,                   -- Open Task View
+        timeout   = function() OutputLogMessage("G9 Gesture Timeout\n") end,   -- No action
+    },
+-- ]]--
+
 }
 
 -- Gesture logic
@@ -121,6 +128,7 @@ function OnEvent(event, arg, family)
   
     ReleaseMacro(gestureHoldMacro)
     
+    local gestureHandler
     tEnd = GetRunningTime();		
     xEnd, yEnd = GetMousePosition()
     
@@ -137,18 +145,18 @@ function OnEvent(event, arg, family)
 
     if tDiff >= maxTime then
        -- Gesture Timeout
-       gestureHandler = Gesture[arg].timeout
+       gestureHandler = Gestures[arg].timeout
     else
         if math.abs(xDiff) > math.abs(yDiff) then
           -- Horizontal Gesture
           primaryDiff     = xDiff
-          positiveHandler = Gesture[arg].moveRight
-          negativeHandler = Gesture[arg].moveLeft
+          positiveHandler = Gestures[arg].moveRight
+          negativeHandler = Gestures[arg].moveLeft
         else
           -- Vertical Gesture
           primaryDiff     = yDiff
-          positiveHandler = Gesture[arg].moveUp
-          negativeHandler = Gesture[arg].moveDown
+          positiveHandler = Gestures[arg].moveDown
+          negativeHandler = Gestures[arg].moveUp
         end
         
         if primaryDiff > minDiff then 
@@ -157,10 +165,26 @@ function OnEvent(event, arg, family)
           gestureHandler = negativeHandler
         else
           -- Click
-          gestureHandler = Gesture[arg].click
+          gestureHandler = Gestures[arg].click
         end
      end
     -- Execute the Gesture
     gestureHandler()
   end
+end
+
+function pressKeys(...)
+    local args = {...}
+    -- Delay between keypresses in miliseconds
+    delay = 20
+
+    if enableDebug then 
+      OutputLogMessage("Pressed keys: ")
+      for _, key in ipairs(args) do OutputLogMessage(key .. ", ") end 
+      OutputLogMessage("\n")
+    end
+      
+    for _, key in ipairs(args) do PressKey(key); Sleep(delay) end
+    for _, key in ipairs(args) do ReleaseKey(key) end    
+    	
 end
