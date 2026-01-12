@@ -24,7 +24,7 @@
 -- Enables or disables debug logging.
 -- To find the button number for a mouse button you want to use for gestures,
 -- enable this option, press the button, and check the console output.
-enableDebug = true
+enableDebug = false
 
 -- Minimum horizontal/vertical mouse movement required to recognize a gesture
 minDiff = 100
@@ -176,15 +176,8 @@ end
 function pressKeys(...)
     local args = {...}
     -- Delay between keypresses in miliseconds
-    delay = 20
-
-    if enableDebug then 
-      OutputLogMessage("Pressed keys: ")
-      for _, key in ipairs(args) do OutputLogMessage(key .. ", ") end 
-      OutputLogMessage("\n")
-    end
-      
-    for _, key in ipairs(args) do PressKey(key); Sleep(delay) end
-    for _, key in ipairs(args) do ReleaseKey(key) end    
-    	
+    delay = 10
+    
+    for i = 1, #args do PressKey(args[i]); Sleep(delay) end
+    for i = #args, 1, -1 do ReleaseKey(args[i]) end     	
 end
